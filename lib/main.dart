@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_fluter_1/screens/ejercicio1.dart';
+import 'package:prueba_fluter_1/screens/ejercicio2.dart';
 
 void main() {
   runApp(Prueba());
@@ -23,13 +24,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int indice=0;
   @override
   Widget build(BuildContext context) {
+      List <Widget> screens=[
+      Body(context),
+      Ejercicio1(),
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Prueba'),
       ),
-      body: Body(context),
+      body: screens[indice],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: indice,
+        onTap: (valor){
+          setState(() {
+            indice = valor;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.adb_sharp), label :"Inicio"),
+          BottomNavigationBarItem(icon: Icon(Icons.add_to_photos_rounded), label:"Ejercicio 1")
+        ],),
     );
   }
 }
@@ -72,7 +89,7 @@ void Alerta(context){
     actions: <Widget> [
       TextButton(
         onPressed: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context)=>Ejercicio1()));
+           Navigator.push(context, MaterialPageRoute(builder: (context)=>Aplicacion2()));
         }, child: Text("Si")),
          TextButton(onPressed: (){
         Navigator.pop(context);

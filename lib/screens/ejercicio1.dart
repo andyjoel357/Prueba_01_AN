@@ -27,6 +27,12 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+     /////////////
+    List <Widget> screens=[
+      Cuerpo(context,
+      )
+    ];
+    ///
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ejercicio01'),
